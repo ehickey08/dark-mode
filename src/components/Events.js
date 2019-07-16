@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import EventForm from './EventForm'
 import Event from './Event'
 import {useAxios} from '../hooks/useAxios'
-
+import styled from 'styled-components'
 function Events(props) {
     const [events, setEvents] = useState([]);
     const [countryCodes] = useAxios("https://api.coingecko.com/api/v3/events/countries")
@@ -18,11 +18,21 @@ function Events(props) {
 
     return (
         <>
-            <h2>Find events near you!</h2>
-            {countryCodes.data && eventTypes.data && <EventForm add={addEvents} countries={countryCodes} types={eventTypes}/>}
-            {events.length>0 && events.map(event => <Event key ={event.title} event={event} />)}
+            <h2 style={{margin:"15px"}}>Find events near you!</h2>
+            <EventForm add={addEvents} countries={countryCodes} types={eventTypes}/>
+            <EventContainer>
+                {events.map(event => <Event key ={event.title} event={event} />)}
+            </EventContainer>
         </>
     )
 }
 
 export default Events
+
+const EventContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1100px;
+    margin: 75px auto;
+`

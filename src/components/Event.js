@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 export default function Event(props) {
-    console.log(props)
     return (
         <EventCard>
             <h3>{props.event.title}</h3>

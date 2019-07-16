@@ -179,7 +179,7 @@ img {
 .navbar a{
     text-decoration: none;
     font-size: 2rem;
-    color: black;
+    color: inherit;
 }
 
 a.navlink_selected{
